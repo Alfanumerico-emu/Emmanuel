@@ -28,7 +28,7 @@
             /* Fondo animado 100% funcional en tonos oscuros */
             background: linear-gradient(-45deg, #000000, #222222, #0a0a0a, #1a1a1a);
             background-size: 400% 400%;
-            background-attachment: fixed; /* Evita que se rompa al hacer scroll */
+            background-attachment: fixed; /* Evita que la animación se rompa */
             animation: gradientAnimation 12s ease infinite;
         }
 
@@ -47,14 +47,14 @@
             max-width: 380px; 
             background: #111111; 
             padding: 40px 25px;
-            border-radius: 20px; /* Borde redondeado estricto */
+            border-radius: 20px; 
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 15px 35px rgba(0,0,0,0.8);
             box-sizing: border-box;
         }
         
         /* =========================================
-           3. FOTO DE PERFIL CIRCULAR PERFECTA
+           3. FOTO DE PERFIL CIRCULAR
            ========================================= */
         .profile-img-container {
             width: 120px;
@@ -71,7 +71,7 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            object-position: center 30%; /* Modifica el 30% para subir/bajar tu rostro */
+            object-position: center 30%; /* Ajusta el % si quieres subir o bajar tu foto */
         }
         
         /* =========================================
@@ -143,7 +143,7 @@
         }
         
         /* =========================================
-           6. ICONOS SVG Y EXTRAS
+           6. ICONOS SVG Y WIDGET
            ========================================= */
         .icon {
             width: 22px;
@@ -157,7 +157,7 @@
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -165,18 +165,13 @@
     
     <div class="card">
         
-        <!-- INTRODUCCIÓN -->
+        <!-- FOTO DE PERFIL Y NOMBRE -->
         <div class="profile-img-container">
             <img src="foto.jpg" alt="Emmanuel Magallanes" class="profile-img">
         </div>
         
         <h1>Emmanuel Magallanes</h1>
         <p class="institution">Académico / Investigador</p>
-        
-        <!-- WIDGET DE SPOTIFY EN EL INTRO -->
-        <div class="spotify-container">
-            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/show/2AV47RVAM5jcJlzs2ZGMfu?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
 
         <!-- BOTÓN DE VCARD -->
         <a onclick="downloadVCard()" class="btn btn-primary">
@@ -214,7 +209,7 @@
         
         <div class="section-title">Redes y Publicaciones</div>
         
-        <!-- RESEARCHGATE (Vector Sólido RG) -->
+        <!-- RESEARCHGATE -->
         <a href="https://www.researchgate.net/profile/Emmanuel-Magallanes" class="btn" target="_blank">
             <svg class="icon" viewBox="0 0 24 24">
                 <path d="M10.875 16.594h2.125V24h-2.125v-7.406Zm2.406-8.281c0-1.688-1.031-2.844-3.219-2.844H4.5v11.125h2.125v-3.719h2.375l2.438 3.719h2.562l-2.656-4.031c1.281-.312 1.938-1.531 1.938-2.688a2.58 2.58 0 0 0-.001-1.562Zm-2.156.406c0 1.094-.75 1.5-2.031 1.5H6.625V7.531h2.469c1.281 0 2.031.406 2.031 1.188ZM20.75 12.188c0 3.594-2.875 6.25-6.531 6.25-3.688 0-6.438-2.844-6.438-6.469S10.563 5.5 14.219 5.5c2.312 0 4.156 1.062 5.25 2.625l-1.688 1.406c-.844-1.281-2.188-2.062-3.563-2.062-2.5 0-4.312 1.969-4.312 4.5s1.812 4.5 4.312 4.5c1.438 0 2.812-.688 3.594-2.094h-3.625v-2.094H20.656c.063.313.094.625.094 1.313Z"/>
@@ -229,6 +224,13 @@
             </svg>
             Perfil en Spotify
         </a>
+
+        <div class="section-title">Escucha mi Podcast</div>
+
+        <!-- WIDGET DE SPOTIFY (Episodio Intro) -->
+        <div class="spotify-container">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/episode/1HarOHEegQzGNRQX5G9mUl?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
 
     </div>
 
