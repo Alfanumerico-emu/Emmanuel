@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emmanuel Magallanes | Micrositio</title>
 
-    <!-- Tipografía Google Fonts: Montserrat -->
+    <!-- Tipografía Profesional: Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
         /* =========================================
-           1. ESTILOS BASE Y FONDO ANIMADO (GRISES/NEGRO)
+           1. ESTILOS BASE Y FONDO ANIMADO CORREGIDO
            ========================================= */
         body { 
             margin: 0; 
@@ -25,35 +25,36 @@
             align-items: center; 
             min-height: 100vh; 
             
-            /* Animación de Gradiente en tonos grises oscuros */
-            background: linear-gradient(-45deg, #000000, #1f1f1f, #0a0a0a, #2a2a2a);
+            /* Fondo animado 100% funcional en tonos oscuros */
+            background: linear-gradient(-45deg, #000000, #222222, #0a0a0a, #1a1a1a);
             background-size: 400% 400%;
-            animation: gradientBackground 12s ease infinite;
+            background-attachment: fixed; /* Evita que se rompa al hacer scroll */
+            animation: gradientAnimation 12s ease infinite;
         }
 
-        @keyframes gradientBackground {
+        @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
         
         /* =========================================
-           2. ESTRUCTURA DE LA TARJETA
+           2. CONTENEDOR PRINCIPAL (TARJETA MÓVIL)
            ========================================= */
         .card { 
             text-align: center; 
             width: 100%; 
-            max-width: 360px; 
-            background: #121212; 
+            max-width: 380px; 
+            background: #111111; 
             padding: 40px 25px;
-            border-radius: 20px; /* Borde redondeado estricto a 20px */
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            border-radius: 20px; /* Borde redondeado estricto */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
             box-sizing: border-box;
         }
         
         /* =========================================
-           3. FOTO DE PERFIL (CONTENEDOR Y AJUSTE)
+           3. FOTO DE PERFIL CIRCULAR PERFECTA
            ========================================= */
         .profile-img-container {
             width: 120px;
@@ -70,22 +71,14 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            
-            /* ========================================================
-               ⬇️ AQUÍ AJUSTAS LA POSICIÓN DE TU FOTO ⬇️
-               El primer valor (center) es izquierda/derecha.
-               El segundo valor (30%) es arriba/abajo.
-               - Si quieres la foto MÁS ARRIBA, baja el % (ej. 10% o 0%).
-               - Si quieres la foto MÁS ABAJO, sube el % (ej. 50% o 80%).
-               ======================================================== */
-            object-position: center 30%; 
+            object-position: center 30%; /* Modifica el 30% para subir/bajar tu rostro */
         }
         
         /* =========================================
-           4. TIPOGRAFÍA
+           4. TIPOGRAFÍA Y TÍTULOS
            ========================================= */
         h1 { 
-            font-size: 1.5rem; 
+            font-size: 1.6rem; 
             font-weight: 800; 
             margin: 0 0 6px 0; 
             letter-spacing: -0.5px; 
@@ -93,17 +86,14 @@
         }
         
         .institution { 
-            color: #8a8a93; 
+            color: #888888; 
             font-size: 0.8rem; 
             font-weight: 600;
-            margin: 0 0 30px 0; 
+            margin: 0 0 25px 0; 
             text-transform: uppercase;
             letter-spacing: 1.5px;
         }
         
-        /* =========================================
-           5. SEPARADORES DE SECCIÓN
-           ========================================= */
         .section-title {
             text-align: left;
             font-size: 0.75rem;
@@ -117,7 +107,7 @@
         }
         
         /* =========================================
-           6. BOTONES (ESTILOS GENERALES Y HOVER)
+           5. BOTONES E INTERACTIVIDAD
            ========================================= */
         .btn { 
             display: flex; 
@@ -143,7 +133,6 @@
             border-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Botón Destacado Blanco */
         .btn-primary {
             background: #ffffff;
             color: #000000;
@@ -154,7 +143,7 @@
         }
         
         /* =========================================
-           7. ICONOS VECTORIALES (SVG Sólidos)
+           6. ICONOS SVG Y EXTRAS
            ========================================= */
         .icon {
             width: 22px;
@@ -164,100 +153,82 @@
             flex-shrink: 0;
         }
 
-        /* =========================================
-           8. ANIMACIONES DE ENTRADA
-           ========================================= */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fadeInUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .spotify-container {
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
-            margin-top: 10px;
+            margin-bottom: 25px;
         }
     </style>
 </head>
 <body>
     
-    <div class="card fade-in" style="animation-delay: 0.1s;">
+    <div class="card">
         
+        <!-- INTRODUCCIÓN -->
         <div class="profile-img-container">
-            <!-- Recuerda revisar la línea 66 del CSS para mover tu foto -->
             <img src="foto.jpg" alt="Emmanuel Magallanes" class="profile-img">
         </div>
         
         <h1>Emmanuel Magallanes</h1>
         <p class="institution">Académico / Investigador</p>
         
+        <!-- WIDGET DE SPOTIFY EN EL INTRO -->
+        <div class="spotify-container">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/show/2AV47RVAM5jcJlzs2ZGMfu?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
         <!-- BOTÓN DE VCARD -->
-        <a onclick="downloadVCard()" class="btn btn-primary fade-in" style="animation-delay: 0.2s;">
+        <a onclick="downloadVCard()" class="btn btn-primary">
             <svg class="icon" viewBox="0 0 24 24">
                 <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
             </svg>
             Guardar en Contactos
         </a>
 
-        <div class="section-title fade-in" style="animation-delay: 0.3s;">Contacto Directo</div>
+        <div class="section-title">Contacto Directo</div>
         
-        <!-- BOTÓN WHATSAPP -->
-        <a href="https://wa.me/524931912255?text=¡Hola%20Emmanuel!%20Acabo%20de%20escanear%20tu%20tarjeta." class="btn fade-in" target="_blank" style="animation-delay: 0.4s;">
+        <!-- WHATSAPP -->
+        <a href="https://wa.me/524931912255?text=¡Hola%20Emmanuel!%20Acabo%20de%20escanear%20tu%20tarjeta." class="btn" target="_blank">
             <svg class="icon" viewBox="0 0 24 24">
                 <path d="M12.031 0C5.385 0 .004 5.38.004 12.027c0 2.124.553 4.195 1.603 6.015L.03 24l6.115-1.605a11.972 11.972 0 0 0 5.885 1.541h.005c6.645 0 12.025-5.38 12.025-12.026C24.06 5.38 18.675 0 12.03 0zm0 21.942h-.005a9.982 9.982 0 0 1-5.087-1.393l-.364-.216-3.782.99.993-3.685-.238-.377a9.98 9.98 0 0 1-1.527-5.32C1.986 6.505 6.474 2.015 12.03 2.015c5.556 0 10.045 4.49 10.045 10.045 0 5.555-4.49 10.044-10.044 10.044zm5.518-7.534c-.302-.15-1.785-.882-2.062-.983-.277-.1-.478-.15-.678.15-.202.302-.78.983-.956 1.184-.176.202-.353.227-.655.076-.302-.15-1.275-.47-2.428-1.5-1.006-.897-1.504-1.79-1.68-2.09-.176-.302-.018-.465.132-.616.136-.135.302-.352.453-.528.15-.176.202-.302.302-.503.1-.2.05-.377-.025-.528-.076-.15-.678-1.637-.928-2.242-.244-.59-.494-.51-.678-.52h-.578c-.202 0-.528.076-.804.378-.277.302-1.057 1.033-1.057 2.518 0 1.485 1.082 2.92 1.233 3.12.15.202 2.128 3.25 5.154 4.557.72.312 1.282.497 1.72.637.724.23 1.383.197 1.902.12.58-.087 1.785-.73 2.036-1.435.25-.705.25-1.31.176-1.436-.076-.126-.277-.202-.58-.352z"/>
             </svg>
             WhatsApp
         </a>    
         
-        <!-- BOTÓN CORREO 1 (SVG Sólido) -->
-        <a href="mailto:emagallanes.u2@gmail.com" class="btn fade-in" style="animation-delay: 0.5s;">
+        <!-- CORREO PERSONAL -->
+        <a href="mailto:emagallanes.u2@gmail.com" class="btn">
             <svg class="icon" viewBox="0 0 24 24">
                 <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
             Correo Personal
         </a>
 
-        <!-- BOTÓN CORREO 2 (SVG Sólido) -->
-        <a href="mailto:emagallanes@upz.edu.mx" class="btn fade-in" style="animation-delay: 0.6s;">
+        <!-- CORREO INSTITUCIONAL -->
+        <a href="mailto:emagallanes@upz.edu.mx" class="btn">
             <svg class="icon" viewBox="0 0 24 24">
                 <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
             Correo Institucional
         </a>
         
-        <div class="section-title fade-in" style="animation-delay: 0.7s;">Redes y Publicaciones</div>
+        <div class="section-title">Redes y Publicaciones</div>
         
-        <!-- BOTÓN RESEARCHGATE (SVG Sólido) -->
-        <a href="https://www.researchgate.net/profile/Emmanuel-Magallanes" class="btn fade-in" target="_blank" style="animation-delay: 0.8s;">
+        <!-- RESEARCHGATE (Vector Sólido RG) -->
+        <a href="https://www.researchgate.net/profile/Emmanuel-Magallanes" class="btn" target="_blank">
             <svg class="icon" viewBox="0 0 24 24">
-                <path d="M19.5 2H4.5C3.1 2 2 3.1 2 4.5v15C2 20.9 3.1 22 4.5 22h15c1.4 0 2.5-1.1 2.5-2.5v-15C22 3.1 20.9 2 19.5 2zM10.875 16.594h2.125V24h-2.125v-7.406Zm2.406-8.281c0-1.688-1.031-2.844-3.219-2.844H4.5v11.125h2.125v-3.719h2.375l2.438 3.719h2.562l-2.656-4.031c1.281-.312 1.938-1.531 1.938-2.688a2.58 2.58 0 0 0-.001-1.562Zm-2.156.406c0 1.094-.75 1.5-2.031 1.5H6.625V7.531h2.469c1.281 0 2.031.406 2.031 1.188ZM20.75 12.188c0 3.594-2.875 6.25-6.531 6.25-3.688 0-6.438-2.844-6.438-6.469S10.563 5.5 14.219 5.5c2.312 0 4.156 1.062 5.25 2.625l-1.688 1.406c-.844-1.281-2.188-2.062-3.563-2.062-2.5 0-4.312 1.969-4.312 4.5s1.812 4.5 4.312 4.5c1.438 0 2.812-.688 3.594-2.094h-3.625v-2.094H20.656c.063.313.094.625.094 1.313Z"/>
+                <path d="M10.875 16.594h2.125V24h-2.125v-7.406Zm2.406-8.281c0-1.688-1.031-2.844-3.219-2.844H4.5v11.125h2.125v-3.719h2.375l2.438 3.719h2.562l-2.656-4.031c1.281-.312 1.938-1.531 1.938-2.688a2.58 2.58 0 0 0-.001-1.562Zm-2.156.406c0 1.094-.75 1.5-2.031 1.5H6.625V7.531h2.469c1.281 0 2.031.406 2.031 1.188ZM20.75 12.188c0 3.594-2.875 6.25-6.531 6.25-3.688 0-6.438-2.844-6.438-6.469S10.563 5.5 14.219 5.5c2.312 0 4.156 1.062 5.25 2.625l-1.688 1.406c-.844-1.281-2.188-2.062-3.563-2.062-2.5 0-4.312 1.969-4.312 4.5s1.812 4.5 4.312 4.5c1.438 0 2.812-.688 3.594-2.094h-3.625v-2.094H20.656c.063.313.094.625.094 1.313Z"/>
             </svg>
             ResearchGate
         </a>
 
-        <!-- BOTÓN SPOTIFY (Redirige al perfil en lugar de solo el iframe) -->
-        <a href="https://open.spotify.com/show/2AV47RVAM5jcJlzs2ZGMfu?si=0978744cfa154df8" class="btn fade-in" target="_blank" style="animation-delay: 0.9s;">
+        <!-- PERFIL SPOTIFY -->
+        <a href="https://open.spotify.com/show/2AV47RVAM5jcJlzs2ZGMfu?si=0978744cfa154df8" class="btn" target="_blank">
             <svg class="icon" viewBox="0 0 24 24">
                 <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.84.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.781s.18-1.2.78-1.381c4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.239.54-.959.72-1.62.36z"/>
             </svg>
             Perfil en Spotify
         </a>
-
-        <div class="section-title fade-in" style="animation-delay: 1.0s;">Escucha mi Podcast</div>
-
-        <!-- WIDGET DE SPOTIFY ACTUALIZADO -->
-        <div class="spotify-container fade-in" style="animation-delay: 1.1s;">
-            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/show/2AV47RVAM5jcJlzs2ZGMfu?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
 
     </div>
 
