@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel Magallanes Ulloa | Micrositio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           1. ESTILOS BASE Y FONDO (Animated Mesh Gradient)
+           ========================================= */
+        body { 
+            margin: 0; 
+            padding: 20px;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif; /* Tipografía profesional aplicada */
+            color: #ffffff; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            
+            /* Fondo Animado Estilo Gemini (Aurora/Mesh) */
+            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e, #0f0c29);
+            background-size: 400% 400%;
+            animation: gradientAnim 15s ease infinite; /* Llama a la animación de abajo */
+        }
+
+        /* Animación fluida del fondo */
+        @keyframes gradientAnim {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* =========================================
+           2. ESTRUCTURA PRINCIPAL (La Tarjeta)
+           ========================================= */
+        .card { 
+            text-align: center; 
+            width: 100%; 
+            max-width: 340px; 
+            background: rgba(10, 10, 10, 0.6); /* Fondo semi-transparente estilo Glassmorphism */
+            backdrop-filter: blur(15px); /* Desenfoque detrás de la tarjeta */
+            -webkit-backdrop-filter: blur(15px);
+            padding: 35px 25px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        /* =========================================
+           3. FOTO DE PERFIL Y CABECERA
+           ========================================= */
+        .profile-img-container {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%; 
+            overflow: hidden; 
+            border: 3px solid rgba(255, 255, 255, 0.2); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        
+        .profile-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Mantiene la proporción sin aplastar la imagen */
+        }
+        
+        h1 { 
+            font-size: 1.4rem; 
+            font-weight: 800; /* Peso grueso para el nombre */
+            margin: 0 0 5px 0; 
+            letter-spacing: -0.5px; 
+        }
+        
+        .institution { 
+            color: #a8a8b3; 
+            font-size: 0.85rem; 
+            font-weight: 500;
+            margin: 0 0 25px 0; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* =========================================
+           4. SEPARADORES Y TEXTOS SECUNDARIOS
+           ========================================= */
+        .section-title {
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin: 25px 0 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+        }
+        
+        /* =========================================
+           5. BOTONES E INTERACTVIDAD
+           ========================================= */
+        .btn { 
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            color: #ffffff; 
+            text-decoration: none; 
+            padding: 14px 18px; 
+            margin-bottom: 12px; 
+            border-radius: 12px; 
+            font-size: 0.95rem; 
+            font-weight: 500;
+            transition: all 0.3s ease; /* Transición suave */
+            cursor: pointer;
+        }
+        
+        /* Efecto Hover: Cambia al pasar el cursor o presionar */
+        .btn:hover, .btn:active { 
+            background: rgba(255, 255, 255, 0.15); 
+            transform: translateY(-3px); /* Levanta el botón ligeramente */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Botón Destacado (vCard) */
+        .btn-primary {
+            background: #ffffff;
+            color: #000000;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background: #e0e0e0;
+            color: #000000;
+        }
+        
+        /* =========================================
+           6. ICONOS VECTORIALES (SVG)
+           ========================================= */
+        .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            fill: currentColor; /* El SVG adopta el color del texto del botón */
+            flex-shrink: 0;
+        }
+
+        /* =========================================
+           7. ANIMACIONES DE ENTRADA ESCALONADA (Staggered)
+           ========================================= */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Módulos de Spotify */
+        .spotify-container {
+            width: 100%;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="card fade-in" style="animation-delay: 0.1s;">
+        
+        <div class="profile-img-container">
+            <img src="foto.jpg" alt="Emmanuel Magallanes" class="profile-img">
+        </div>
+        
+        <h1>Emmanuel Magallanes</h1>
+        <p class="institution">Académico / Investigador</p>
+        
+        <a onclick="downloadVCard()" class="btn btn-primary fade-in" style="animation-delay: 0.2s;">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Guardar en Contactos
+        </a>
+
+        <div class="section-title fade-in" style="animation-delay: 0.3s;">Contacto Directo</div>
+        
+        <a href="https://wa.me/524931912255?text=¡Hola%20Emmanuel!%20Acabo%20de%20escanear%20tu%20tarjeta." class="btn fade-in" target="_blank" style="animation-delay: 0.4s;">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            WhatsApp
+        </a>    
+        
+        <a href="mailto:emagallanes.u2@gmail.com" class="btn fade-in" style="animation-delay: 0.5s;">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Personal
+        </a>
+
+        <a href="mailto:emagallanes@upz.edu.mx" class="btn fade-in" style="animation-delay: 0.6s;">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Institucional
+        </a>
+        
+        <div class="section-title fade-in" style="animation-delay: 0.7s;">Redes y Publicaciones</div>
+        
+        <a href="https://www.researchgate.net/profile/Emmanuel-Magallanes" class="btn fade-in" target="_blank" style="animation-delay: 0.8s;">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M10.875 16.594h2.125V24h-2.125v-7.406Zm2.406-8.281c0-1.688-1.031-2.844-3.219-2.844H4.5v11.125h2.125v-3.719h2.375l2.438 3.719h2.562l-2.656-4.031c1.281-.312 1.938-1.531 1.938-2.688a2.58 2.58 0 0 0-.001-1.562Zm-2.156.406c0 1.094-.75 1.5-2.031 1.5H6.625V7.531h2.469c1.281 0 2.031.406 2.031 1.188ZM20.75 12.188c0 3.594-2.875 6.25-6.531 6.25-3.688 0-6.438-2.844-6.438-6.469S10.563 5.5 14.219 5.5c2.312 0 4.156 1.062 5.25 2.625l-1.688 1.406c-.844-1.281-2.188-2.062-3.563-2.062-2.5 0-4.312 1.969-4.312 4.5s1.812 4.5 4.312 4.5c1.438 0 2.812-.688 3.594-2.094h-3.625v-2.094H20.656c.063.313.094.625.094 1.313Z"/></svg>
+            ResearchGate
+        </a>
+
+        <div class="section-title fade-in" style="animation-delay: 0.9s;">Escucha mi Podcast</div>
+
+        <div class="spotify-container fade-in" style="animation-delay: 1.0s;">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/TU_ID_DE_EPISODIO?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+    </div>
+
+    <script>
+        function downloadVCard() {
+            // Construimos la estructura de datos vCard (versión 3.0)
+            const vcardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Emmanuel Magallanes Ulloa
+ORG:UPZ
+TITLE:Académico / Investigador
+TEL;TYPE=WORK,VOICE:+52 493 191 2255
+EMAIL;TYPE=WORK:emagallanes@upz.edu.mx
+EMAIL;TYPE=HOME:emagallanes.u2@gmail.com
+URL:https://www.researchgate.net/profile/Emmanuel-Magallanes
+END:VCARD`;
+
+            // Creamos un Blob (archivo binario temporal en memoria)
+            const blob = new Blob([vcardData], { type: "text/vcard" });
+            const url = URL.createObjectURL(blob);
+            
+            // Creamos una etiqueta <a> invisible para forzar la descarga
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "Emmanuel_Magallanes.vcf"; // Nombre del archivo
+            document.body.appendChild(a);
+            a.click(); // Simulamos el clic
+            
+            // Limpiamos el HTML removiendo el botón temporal
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
