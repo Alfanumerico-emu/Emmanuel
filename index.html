@@ -28,7 +28,7 @@
         }
 
         /* =========================================
-           2. FONDO ANIMADO INTENSO Y VIBRANTE
+           2. FONDO ANIMADO MULTICOLOR CORREGIDO
            ========================================= */
         .bg-animated {
             position: fixed;
@@ -37,10 +37,10 @@
             width: 100vw;
             height: 100vh;
             z-index: -1; 
-            /* Gradiente vibrante: Rojo/Naranja, Amarillo, Azul Rey y Cyan */
-            background: linear-gradient(-45deg, #FF3D00, #FFC300, #2962FF, #00E5FF);
-            background-size: 400% 400%;
-            animation: gradientAnimation 12s ease infinite;
+            /* Gradiente con Rojo intenso, Amarillo vibrante, Cyan y Azul profundo */
+            background: linear-gradient(135deg, #FF0055, #FFC300, #00E5FF, #2962FF, #FF0055);
+            background-size: 300% 300%;
+            animation: gradientAnimation 15s ease-in-out infinite;
         }
 
         @keyframes gradientAnimation {
@@ -118,7 +118,7 @@
         }
         
         /* =========================================
-           6. BOTONES E INTERACTIVIDAD
+           6. BOTONES E INTERACTIVIDAD REFINADA
            ========================================= */
         .btn { 
             display: flex; 
@@ -133,15 +133,17 @@
             border-radius: 14px; 
             font-size: 0.95rem; 
             font-weight: 600;
-            transition: all 0.3s ease; 
+            /* Transición más lenta y suave para mejor percepción */
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
             cursor: pointer;
         }
         
         .btn:hover { 
             background: #2a2a2a; 
-            transform: translateY(-2px); 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border-color: rgba(255, 255, 255, 0.1);
+            /* Desplazamiento más notorio y aumento de escala */
+            transform: translateY(-4px) scale(1.02); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border-color: rgba(255, 255, 255, 0.2);
         }
         
         /* =========================================
@@ -165,7 +167,7 @@
 </head>
 <body>
 
-    <!-- CAPA DEL FONDO ANIMADO VIBRANTE -->
+    <!-- CAPA DEL FONDO ANIMADO MULTICOLOR -->
     <div class="bg-animated"></div>
     
     <div class="card">
@@ -176,7 +178,7 @@
         </div>
         
         <h1>Emmanuel Magallanes</h1>
-        <p class="institution">Docente / Investigador</p>
+        <p class="institution">Académico / Investigador</p>
 
         <div class="section-title">Contacto Directo</div>
         
@@ -206,7 +208,7 @@
         
         <div class="section-title">Redes y Publicaciones</div>
         
-        <!-- RESEARCHGATE (Diseño Geométrico RG) -->
+        <!-- RESEARCHGATE -->
         <a href="https://www.researchgate.net/profile/Emmanuel-Magallanes" class="btn" target="_blank">
             <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <rect width="24" height="24" rx="4" fill="currentColor"/>
@@ -215,7 +217,7 @@
             ResearchGate
         </a>
 
-        <!-- FACEBOOK (Pendiente de enlace) -->
+        <!-- FACEBOOK -->
         <a href="" class="btn" target="_blank">
             <svg class="icon" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
