@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emmanuel Magallanes | Micrositio</title>
+    <title>Almendra Renée Espinoza Rodriguez | Tarjeta Digital NFC</title>
 
     <!-- Tipografía Profesional: Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,23 +12,23 @@
 
     <style>
         /* =========================================
-           1. ESTILOS BASE
+           1. ESTILOS BASE Y POSICIONAMIENTO ELEVADO
            ========================================= */
         body { 
             margin: 0; 
-            padding: 40px 20px; 
+            padding: 6vh 20px 8vh 20px; /* Eleva la tarjeta para dejar ver el fondo abajo */
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif; 
             color: #ffffff; 
             display: flex; 
             justify-content: center; 
-            align-items: center; 
+            align-items: flex-start; /* Alineación superior corregida */
             min-height: 100vh; 
             background-color: transparent; 
         }
 
         /* =========================================
-           2. FONDO ANIMADO MULTICOLOR CORREGIDO
+           2. FONDO ANIMADO MULTICOLOR (ÓRBITA COMPLETA)
            ========================================= */
         .bg-animated {
             position: fixed;
@@ -37,20 +37,23 @@
             width: 100vw;
             height: 100vh;
             z-index: -1; 
-            /* Gradiente con Rojo intenso, Amarillo vibrante, Cyan y Azul profundo */
+            /* Paleta de alto impacto solicitada */
             background: linear-gradient(135deg, #FF0055, #FFC300, #00E5FF, #2962FF, #FF0055);
-            background-size: 300% 300%;
-            animation: gradientAnimation 15s ease-in-out infinite;
+            background-size: 400% 400%; /* Incrementado para mayor rango de movimiento */
+            animation: gradientAnimation 10s ease-in-out infinite; /* Velocidad óptima ajustada */
         }
 
+        /* Trayectoria corregida en 4 puntos para forzar la transición de TODOS los colores en móvil */
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
             50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
             100% { background-position: 0% 50%; }
         }
         
         /* =========================================
-           3. CONTENEDOR PRINCIPAL (TARJETA MÓVIL)
+           3. CONTENEDOR PRINCIPAL (ESTILO PREMIUM DARK)
            ========================================= */
         .card { 
             text-align: center; 
@@ -60,12 +63,12 @@
             padding: 40px 25px;
             border-radius: 20px; 
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.9);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             box-sizing: border-box;
         }
         
         /* =========================================
-           4. FOTO DE PERFIL CIRCULAR
+           4. FOTO DE PERFIL CON AJUSTE MANUAL
            ========================================= */
         .profile-img-container {
             width: 120px;
@@ -82,27 +85,33 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            object-position: center 30%; 
+            /* 
+               AJUSTE MANUAL DE LA FOTO:
+               Modifica el '25%' para calibrar la altura. 
+               Menor porcentaje sube la foto, mayor porcentaje la baja.
+            */
+            object-position: center 25%; 
         }
         
         /* =========================================
-           5. TIPOGRAFÍA Y TÍTULOS
+           5. TIPOGRAFÍA Y IDENTIDAD
            ========================================= */
         h1 { 
-            font-size: 1.6rem; 
-            font-weight: 800; 
-            margin: 0 0 6px 0; 
+            font-size: 1.5rem; 
+            font-weight: 900; 
+            margin: 0 0 8px 0; 
             letter-spacing: -0.5px; 
+            line-height: 1.2;
             color: #ffffff;
+            text-transform: uppercase;
         }
         
-        .institution { 
+        .title-sub { 
             color: #888888; 
-            font-size: 0.8rem; 
+            font-size: 0.85rem; 
             font-weight: 600;
-            margin: 0 0 25px 0; 
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            margin: 0 0 30px 0; 
+            letter-spacing: 0.5px;
         }
         
         .section-title {
@@ -111,14 +120,14 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #777;
-            margin: 30px 0 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: #555555;
+            margin: 25px 0 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             padding-bottom: 8px;
         }
         
         /* =========================================
-           6. BOTONES E INTERACTIVIDAD REFINADA
+           6. BOTONES ESTILO PASTILLA DE ALTA GAMA
            ========================================= */
         .btn { 
             display: flex; 
@@ -129,107 +138,129 @@
             color: #ffffff; 
             text-decoration: none; 
             padding: 16px; 
-            margin-bottom: 12px; 
-            border-radius: 14px; 
+            margin-bottom: 14px; 
+            border-radius: 50px; /* Estilo píldora perfecto */
             font-size: 0.95rem; 
             font-weight: 600;
-            /* Transición más lenta y suave para mejor percepción */
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
             cursor: pointer;
         }
         
-        .btn:hover { 
-            background: #2a2a2a; 
-            /* Desplazamiento más notorio y aumento de escala */
+        .btn:hover, .btn:active { 
+            background: #252525; 
             transform: translateY(-4px) scale(1.02); 
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
             border-color: rgba(255, 255, 255, 0.2);
         }
         
         /* =========================================
-           7. ICONOS SVG Y WIDGET
+           7. ICONOS SVG (SÓLIDOS CON HERENCIA DE COLOR)
            ========================================= */
         .icon {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             margin-right: 12px;
             fill: currentColor; 
             flex-shrink: 0;
         }
 
-        .spotify-container {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 10px;
+        /* Fila de Redes Sociales Inferior (Solo Iconos) */
+        .social-icons-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 5px;
+            padding-top: 15px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+            color: #666666; /* Tono neutro inicial */
+        }
+
+        .social-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: currentColor;
+        }
+
+        /* Efecto dinámico al pasar el dedo o cursor en las redes */
+        .social-icon:hover, .social-icon:active {
+            transform: scale(1.2);
+            color: #ffffff; /* Enciende a blanco puro */
         }
     </style>
 </head>
 <body>
 
-    <!-- CAPA DEL FONDO ANIMADO MULTICOLOR -->
+    <!-- CAPA DEL FONDO ANIMADO DE ALTO IMPACTO -->
     <div class="bg-animated"></div>
     
     <div class="card">
         
-        <!-- FOTO DE PERFIL Y NOMBRE -->
+        <!-- FOTO DE PERFIL (Mantiene el archivo a color de Almendra) -->
         <div class="profile-img-container">
-            <img src="foto.jpg" alt="Emmanuel Magallanes" class="profile-img">
+            <img src="foto_rene.jpg" alt="Almendra Renée Espinoza Rodriguez" class="profile-img">
         </div>
         
-        <h1>Emmanuel Magallanes</h1>
-        <p class="institution">Académico / Investigador</p>
+        <!-- IDENTIDAD -->
+        <h1>Almendra Renée<br>Espinoza Rodriguez</h1>
+        <p class="title-sub">Estratega en Mercadotecnia Integral</p>
 
         <div class="section-title">Contacto Directo</div>
         
-        <!-- WHATSAPP -->
-        <a href="https://wa.me/524931912255?text=¡Hola%20Emmanuel!%20Acabo%20de%20escanear%20tu%20tarjeta." class="btn" target="_blank">
-            <svg class="icon" viewBox="0 0 24 24">
-                <path d="M12.031 0C5.385 0 .004 5.38.004 12.027c0 2.124.553 4.195 1.603 6.015L.03 24l6.115-1.605a11.972 11.972 0 0 0 5.885 1.541h.005c6.645 0 12.025-5.38 12.025-12.026C24.06 5.38 18.675 0 12.03 0zm0 21.942h-.005a9.982 9.982 0 0 1-5.087-1.393l-.364-.216-3.782.99.993-3.685-.238-.377a9.98 9.98 0 0 1-1.527-5.32C1.986 6.505 6.474 2.015 12.03 2.015c5.556 0 10.045 4.49 10.045 10.045 0 5.555-4.49 10.044-10.044 10.044zm5.518-7.534c-.302-.15-1.785-.882-2.062-.983-.277-.1-.478-.15-.678.15-.202.302-.78.983-.956 1.184-.176.202-.353.227-.655.076-.302-.15-1.275-.47-2.428-1.5-1.006-.897-1.504-1.79-1.68-2.09-.176-.302-.018-.465.132-.616.136-.135.302-.352.453-.528.15-.176.202-.302.302-.503.1-.2.05-.377-.025-.528-.076-.15-.678-1.637-.928-2.242-.244-.59-.494-.51-.678-.52h-.578c-.202 0-.528.076-.804.378-.277.302-1.057 1.033-1.057 2.518 0 1.485 1.082 2.92 1.233 3.12.15.202 2.128 3.25 5.154 4.557.72.312 1.282.497 1.72.637.724.23 1.383.197 1.902.12.58-.087 1.785-.73 2.036-1.435.25-.705.25-1.31.176-1.436-.076-.126-.277-.202-.58-.352z"/>
+        <!-- BOTÓN WHATSAPP (Icono Sólido) -->
+        <a href="https://wa.me/523313058283" class="btn" target="_blank">
+            <svg class="icon" viewBox="0 0 448 512">
+                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-117zm-157 338.7h-.1c-34 0-67.3-9.2-96-26.5L118 402 47.1 420.6l18.9-69.4-4.4-7c-19-30.1-29-65.1-29-101.1 0-106 86.2-192.2 192.3-192.2 51.4 0 99.7 20 136 56.3s56.3 84.6 56.3 136c-.1 106-86.4 192.3-192.4 192.3zm116.4-147.4c-6.1-3-36.1-17.8-41.7-19.8-5.6-2-9.7-3-13.8 3-4.1 6.1-15.8 19.8-19.3 23.8-3.6 4.1-7.1 4.6-13.2 1.5-6.1-3-25.7-9.5-49-30.3-18.1-16.1-30.3-36-33.9-42.1-3.6-6.1-.4-9.4 2.6-12.4 2.7-2.7 6.1-7.1 9.2-10.7 3-3.6 4.1-6.1 6.1-10.2 2-4.1 1-7.6-.5-10.7-1.5-3-13.8-33.2-18.8-45.6-4.9-11.9-9.8-10.3-13.8-10.5-3.6-.2-7.6-.2-11.7-.2-4.1 0-10.7 1.5-16.3 7.6-5.6 6.1-21.3 20.8-21.3 50.7s21.8 58.9 24.8 62.9c3 4.1 42.9 65.5 104 91.9 14.5 6.3 25.8 10.1 34.7 12.9 14.6 4.6 28 4 38.5 2.4 11.7-1.7 36.1-14.8 41.2-29.1 5.1-14.3 5.1-26.5 3.6-29.1-1.5-2.6-5.6-4.1-11.7-7.1z"/>
             </svg>
-            WhatsApp
-        </a>    
+            WhatsApp Directo
+        </a>   
         
-        <!-- CORREO PERSONAL -->
-        <a href="mailto:emagallanes.u2@gmail.com" class="btn">
+        <!-- BOTÓN LLAMADA (Icono Sólido) -->
+        <a href="tel:3313058283" class="btn">
+            <svg class="icon" viewBox="0 0 512 512">
+                <path d="M493.4 24.6l-104-24c-11.3-2.6-23.1 2.3-28.6 12.1L314.5 108.1c-5.5 9.8-3.7 22 4.4 29.9l58.1 58.1c-35.3 75.9-97.3 137.8-173.1 173.1l-58.1-58.1c-7.9-8.1-20.2-9.9-29.9-4.4L12.7 353c-9.8 5.5-14.7 17.3-12.1 28.6l24 104c2.6 11.3 12.3 19.5 23.8 19.5h8c229.3 0 416-186.7 416-416v-8c0-11.5-8.2-21.2-19.5-23.8z"/>
+            </svg>
+            Llamada Directa
+        </a>
+
+        <!-- BOTÓN CORREO (Icono Sólido) -->
+        <a href="mailto:almendraer@gmail.com" class="btn">
             <svg class="icon" viewBox="0 0 24 24">
                 <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
-            Correo Personal
-        </a>
-
-        <!-- CORREO INSTITUCIONAL -->
-        <a href="mailto:emagallanes@upz.edu.mx" class="btn">
-            <svg class="icon" viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-            </svg>
-            Correo Institucional
+            Enviar Correo
         </a>
         
-        <div class="section-title">Redes y Publicaciones</div>
+        <div class="section-title">Redes Sociales</div>
         
-        <!-- RESEARCHGATE -->
-        <a href="https://www.researchgate.net/profile/Emmanuel-Magallanes" class="btn" target="_blank">
-            <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <rect width="24" height="24" rx="4" fill="currentColor"/>
-                <text x="12" y="17" font-family="Montserrat, sans-serif" font-weight="900" font-size="14" fill="#111111" text-anchor="middle">RG</text>
-            </svg>
-            ResearchGate
-        </a>
+        <!-- FILA DE ICONOS CON ESPACIOS PARA ENLACES -->
+        <div class="social-icons-row">
+            
+            <!-- Instagram: Reemplaza el '#' por tu link definitivo -->
+            <a href="#" class="social-icon" target="_blank" title="Instagram">
+                <svg viewBox="0 0 448 512">
+                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                </svg>
+            </a>
 
-        <!-- FACEBOOK -->
-        <a href="" class="btn" target="_blank">
-            <svg class="icon" viewBox="0 0 24 24">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-            Facebook
-        </a>
+            <!-- Facebook: Reemplaza el '#' por tu link definitivo -->
+            <a href="#" class="social-icon" target="_blank" title="Facebook">
+                <svg viewBox="0 0 512 512">
+                    <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
+                </svg>
+            </a>
 
-        <div class="section-title">Escucha mi Podcast</div>
+            <!-- LinkedIn: Reemplaza el '#' por tu link definitivo -->
+            <a href="#" class="social-icon" target="_blank" title="LinkedIn">
+                <svg viewBox="0 0 448 512">
+                    <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
+                </svg>
+            </a>
 
-        <!-- WIDGET DE SPOTIFY -->
-        <div class="spotify-container">
-            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/episode/1HarOHEegQzGNRQX5G9mUl?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
 
     </div>
