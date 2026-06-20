@@ -16,55 +16,46 @@
            ========================================= */
         body { 
             margin: 0; 
-            padding: 6vh 20px 8vh 20px; /* Eleva la tarjeta para dejar ver el fondo abajo */
+            padding: 5vh 20px;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif; 
             color: #ffffff; 
             display: flex; 
             justify-content: center; 
-            align-items: flex-start; /* Alineación superior corregida */
+            align-items: center;
             min-height: 100vh; 
-            background-color: transparent; 
+            background-color: #050505; 
+            overflow-x: hidden;
         }
 
         /* =========================================
-           2. FONDO ANIMADO MULTICOLOR (ÓRBITA COMPLETA)
+           2. CANVAS DE FONDO EFECTO PIPELINE
            ========================================= */
-        .bg-animated {
+        #pipeline-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1; 
-            /* Paleta de alto impacto solicitada */
-            background: linear-gradient(135deg, #FF0055, #FFC300, #00E5FF, #2962FF, #FF0055);
-            background-size: 400% 400%; /* Incrementado para mayor rango de movimiento */
-            animation: gradientAnimation 10s ease-in-out infinite; /* Velocidad óptima ajustada */
-        }
-
-        /* Trayectoria corregida en 4 puntos para forzar la transición de TODOS los colores en móvil */
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            25% { background-position: 50% 100%; }
-            50% { background-position: 100% 50%; }
-            75% { background-position: 50% 0%; }
-            100% { background-position: 0% 50%; }
+            z-index: -1;
+            background-color: #050505;
         }
         
         /* =========================================
-           3. CONTENEDOR PRINCIPAL (ESTILO PREMIUM DARK)
+           3. CONTENEDOR PRINCIPAL (GLASSMORPHISM PREMIUM)
            ========================================= */
         .card { 
             text-align: center; 
             width: 100%; 
-            max-width: 380px; 
-            background: #111111; 
+            max-width: 360px; /* Estrechada sutilmente para lucir el fondo en móvil */
+            background: rgba(17, 17, 17, 0.72); /* Translucidez equilibrada */
             padding: 40px 25px;
             border-radius: 20px; 
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
             box-sizing: border-box;
+            backdrop-filter: blur(14px); /* Difumina las líneas al pasar detrás de la tarjeta */
+            -webkit-backdrop-filter: blur(14px);
         }
         
         /* =========================================
@@ -76,7 +67,7 @@
             margin: 0 auto 20px auto;
             border-radius: 50%; 
             overflow: hidden; 
-            border: 3px solid rgba(255, 255, 255, 0.15); 
+            border: 3px solid rgba(255, 255, 255, 0.2); 
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             background-color: #222; 
         }
@@ -85,29 +76,24 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            /* 
-               AJUSTE MANUAL DE LA FOTO:
-               Modifica el '25%' para calibrar la altura. 
-               Menor porcentaje sube la foto, mayor porcentaje la baja.
-            */
             object-position: center 25%; 
         }
         
         /* =========================================
-           5. TIPOGRAFÍA Y IDENTIDAD
+           5. TIPOGRAFÍA E IDENTIDAD
            ========================================= */
         h1 { 
-            font-size: 1.5rem; 
+            font-size: 1.45rem; 
             font-weight: 900; 
             margin: 0 0 8px 0; 
             letter-spacing: -0.5px; 
-            line-height: 1.2;
+            line-height: 1.25;
             color: #ffffff;
             text-transform: uppercase;
         }
         
         .title-sub { 
-            color: #888888; 
+            color: #A3A3A3; 
             font-size: 0.85rem; 
             font-weight: 600;
             margin: 0 0 30px 0; 
@@ -120,55 +106,55 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #555555;
+            color: #666666;
             margin: 25px 0 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             padding-bottom: 8px;
         }
         
         /* =========================================
-           6. BOTONES ESTILO PASTILLA DE ALTA GAMA
+           6. BOTONES ESTILO PASTILLA MEJORADOS
            ========================================= */
         .btn { 
             display: flex; 
             align-items: center;
             justify-content: center;
-            background: #1c1c1c; 
-            border: 1px solid rgba(255, 255, 255, 0.05); 
+            background: rgba(28, 28, 28, 0.85); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
             color: #ffffff; 
             text-decoration: none; 
             padding: 16px; 
             margin-bottom: 14px; 
-            border-radius: 50px; /* Estilo píldora perfecto */
-            font-size: 0.95rem; 
+            border-radius: 50px; 
+            font-size: 0.92rem; 
             font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
             cursor: pointer;
         }
         
         .btn:hover, .btn:active { 
-            background: #252525; 
-            transform: translateY(-4px) scale(1.02); 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: #ffffff; 
+            color: #000000;
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+            border-color: #ffffff;
         }
         
         /* =========================================
-           7. ICONOS SVG (SÓLIDOS CON HERENCIA DE COLOR)
+           7. ICONOS SVG (SÓLIDOS)
            ========================================= */
         .icon {
-            width: 20px;
-            height: 20px;
+            width: 19px;
+            height: 19px;
             margin-right: 12px;
             fill: currentColor; 
             flex-shrink: 0;
         }
 
-        /* Fila de Redes Sociales Inferior (Solo Iconos) */
         .social-icons-row {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 35px;
             margin-top: 5px;
             padding-top: 15px;
         }
@@ -177,7 +163,7 @@
             display: inline-flex;
             text-decoration: none;
             transition: transform 0.3s ease, color 0.3s ease;
-            color: #666666; /* Tono neutro inicial */
+            color: #737373; 
         }
 
         .social-icon svg {
@@ -186,21 +172,20 @@
             fill: currentColor;
         }
 
-        /* Efecto dinámico al pasar el dedo o cursor en las redes */
         .social-icon:hover, .social-icon:active {
-            transform: scale(1.2);
-            color: #ffffff; /* Enciende a blanco puro */
+            transform: scale(1.25);
+            color: #00E5FF; /* Enciende en cian tecnológico al interactuar */
         }
     </style>
 </head>
 <body>
 
-    <!-- CAPA DEL FONDO ANIMADO DE ALTO IMPACTO -->
-    <div class="bg-animated"></div>
+    <!-- LIENZO DE RENDERIZADO PARA LAS TUBERÍAS DIGITALES -->
+    <canvas id="pipeline-canvas"></canvas>
     
     <div class="card">
         
-        <!-- FOTO DE PERFIL (Mantiene el archivo a color de Almendra) -->
+        <!-- FOTO DE PERFIL -->
         <div class="profile-img-container">
             <img src="foto_rene.jpg" alt="Almendra Renée Espinoza Rodriguez" class="profile-img">
         </div>
@@ -211,7 +196,7 @@
 
         <div class="section-title">Contacto Directo</div>
         
-        <!-- BOTÓN WHATSAPP (Icono Sólido) -->
+        <!-- BOTÓN WHATSAPP -->
         <a href="https://wa.me/523313058283" class="btn" target="_blank">
             <svg class="icon" viewBox="0 0 448 512">
                 <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-117zm-157 338.7h-.1c-34 0-67.3-9.2-96-26.5L118 402 47.1 420.6l18.9-69.4-4.4-7c-19-30.1-29-65.1-29-101.1 0-106 86.2-192.2 192.3-192.2 51.4 0 99.7 20 136 56.3s56.3 84.6 56.3 136c-.1 106-86.4 192.3-192.4 192.3zm116.4-147.4c-6.1-3-36.1-17.8-41.7-19.8-5.6-2-9.7-3-13.8 3-4.1 6.1-15.8 19.8-19.3 23.8-3.6 4.1-7.1 4.6-13.2 1.5-6.1-3-25.7-9.5-49-30.3-18.1-16.1-30.3-36-33.9-42.1-3.6-6.1-.4-9.4 2.6-12.4 2.7-2.7 6.1-7.1 9.2-10.7 3-3.6 4.1-6.1 6.1-10.2 2-4.1 1-7.6-.5-10.7-1.5-3-13.8-33.2-18.8-45.6-4.9-11.9-9.8-10.3-13.8-10.5-3.6-.2-7.6-.2-11.7-.2-4.1 0-10.7 1.5-16.3 7.6-5.6 6.1-21.3 20.8-21.3 50.7s21.8 58.9 24.8 62.9c3 4.1 42.9 65.5 104 91.9 14.5 6.3 25.8 10.1 34.7 12.9 14.6 4.6 28 4 38.5 2.4 11.7-1.7 36.1-14.8 41.2-29.1 5.1-14.3 5.1-26.5 3.6-29.1-1.5-2.6-5.6-4.1-11.7-7.1z"/>
@@ -219,7 +204,7 @@
             WhatsApp Directo
         </a>   
         
-        <!-- BOTÓN LLAMADA (Icono Sólido) -->
+        <!-- BOTÓN LLAMADA -->
         <a href="tel:3313058283" class="btn">
             <svg class="icon" viewBox="0 0 512 512">
                 <path d="M493.4 24.6l-104-24c-11.3-2.6-23.1 2.3-28.6 12.1L314.5 108.1c-5.5 9.8-3.7 22 4.4 29.9l58.1 58.1c-35.3 75.9-97.3 137.8-173.1 173.1l-58.1-58.1c-7.9-8.1-20.2-9.9-29.9-4.4L12.7 353c-9.8 5.5-14.7 17.3-12.1 28.6l24 104c2.6 11.3 12.3 19.5 23.8 19.5h8c229.3 0 416-186.7 416-416v-8c0-11.5-8.2-21.2-19.5-23.8z"/>
@@ -227,7 +212,7 @@
             Llamada Directa
         </a>
 
-        <!-- BOTÓN CORREO (Icono Sólido) -->
+        <!-- BOTÓN CORREO -->
         <a href="mailto:almendraer@gmail.com" class="btn">
             <svg class="icon" viewBox="0 0 24 24">
                 <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -237,33 +222,116 @@
         
         <div class="section-title">Redes Sociales</div>
         
-        <!-- FILA DE ICONOS CON ESPACIOS PARA ENLACES -->
+        <!-- FILA DE REDES SOCIALES INFERIOR -->
         <div class="social-icons-row">
-            
-            <!-- Instagram: Reemplaza el '#' por tu link definitivo -->
             <a href="#" class="social-icon" target="_blank" title="Instagram">
                 <svg viewBox="0 0 448 512">
                     <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
                 </svg>
             </a>
-
-            <!-- Facebook: Reemplaza el '#' por tu link definitivo -->
             <a href="#" class="social-icon" target="_blank" title="Facebook">
                 <svg viewBox="0 0 512 512">
                     <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
                 </svg>
             </a>
-
-            <!-- LinkedIn: Reemplaza el '#' por tu link definitivo -->
             <a href="#" class="social-icon" target="_blank" title="LinkedIn">
                 <svg viewBox="0 0 448 512">
                     <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
                 </svg>
             </a>
-
         </div>
 
     </div>
 
+    <!-- =========================================
+       8. MOTOR JAVASCRIPT DE EFECTO PIPELINE (NATIVO)
+       ========================================= -->
+    <script>
+        const canvas = document.getElementById('pipeline-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        // Paleta exacta de Almendra
+        const colors = ['#FF0055', '#FFC300', '#00E5FF', '#2962FF'];
+        const totalPipes = 20;
+        const pipes = [];
+
+        class Pipeline {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                // Forzar distribución alineada a una rejilla virtual de 20px
+                this.x = Math.floor(Math.random() * (width / 20)) * 20;
+                this.y = Math.floor(Math.random() * (height / 20)) * 20;
+                this.speed = 2;
+                
+                // Direcciones ortogonales (arriba, derecha, abajo, izquierda)
+                const directions = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+                this.dir = directions[Math.floor(Math.random() * directions.length)];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                this.currentLength = 0;
+                this.maxLength = Math.random() * 200 + 60;
+            }
+
+            update() {
+                this.x += this.dir[0] * this.speed;
+                this.y += this.dir[1] * this.speed;
+                this.currentLength += this.speed;
+
+                // Si excede la longitud del segmento o sale de la pantalla, gira o se reinicia
+                if (this.currentLength > this.maxLength || this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+                    if (Math.random() < 0.6) {
+                        // Giro de 90 grados estilo circuito Pipeline
+                        this.dir = [-this.dir[1], this.dir[0]];
+                        if (Math.random() < 0.5) this.dir = [-this.dir[0], -this.dir[1]];
+                        this.currentLength = 0;
+                        this.maxLength = Math.random() * 200 + 60;
+                    } else {
+                        this.init();
+                    }
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                // Renderizado con sutil resplandor de neón digital
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = this.color;
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x, this.y, 2.5, 2.5);
+                ctx.shadowBlur = 0; // Apagar sombra para optimizar rendimiento de GPU
+            }
+        }
+
+        // Generar pool de tuberías
+        for (let i = 0; i < totalPipes; i++) {
+            pipes.push(new Pipeline());
+        }
+
+        // Loop de animación a 60fps con efecto estela (fade out)
+        function render() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.06)'; // Crea el rastro fluido
+            ctx.fillRect(0, 0, width, height);
+
+            pipes.forEach(pipe => {
+                pipe.update();
+                pipe.draw();
+            });
+
+            requestAnimationFrame(render);
+        }
+
+        render();
+    </script>
 </body>
 </html>
