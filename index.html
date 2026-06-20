@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emmanuel Magallanes | Micrositio</title>
 
+    <!-- Tipografía Profesional: Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
@@ -23,38 +24,40 @@
             justify-content: center; 
             align-items: center; 
             min-height: 100vh; 
-            background-color: #050505; 
+            background-color: #000000; /* Fondo base oscuro para el canvas */
             overflow-x: hidden;
         }
 
         /* =========================================
-           2. CANVAS DE FONDO EFECTO PIPELINE NATIVO
+           2. CONTENEDOR DEL EFECTO PIPELINE
            ========================================= */
-        #pipeline-canvas {
+        .content--canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1;
-            background-color: #050505;
+            z-index: -1; /* Lo enviamos al fondo */
+            pointer-events: none; /* Evita que el canvas interfiera con los toques/clics */
         }
-        
+
         /* =========================================
-           3. CONTENEDOR PRINCIPAL REFINADO (GLASSMORPHISM)
+           3. CONTENEDOR PRINCIPAL (GLASSMORPHISM)
            ========================================= */
         .card { 
             text-align: center; 
             width: 100%; 
-            max-width: 355px; /* Sutilmente estrechado para lucir el efecto Pipeline en los lados */
-            background: rgba(17, 17, 17, 0.74); /* Transparencia equilibrada */
+            max-width: 350px; /* Tarjeta ligeramente más estrecha para lucir el fondo */
+            /* Efecto Cristal (Glassmorphism) */
+            background: rgba(20, 20, 20, 0.4); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
             padding: 40px 25px;
             border-radius: 20px; 
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
             box-sizing: border-box;
-            backdrop-filter: blur(12px); /* Difumina las líneas de neón al pasar por detrás */
-            -webkit-backdrop-filter: blur(12px);
+            z-index: 1;
         }
         
         /* =========================================
@@ -90,7 +93,7 @@
         }
         
         .institution { 
-            color: #888888; 
+            color: #cccccc; 
             font-size: 0.8rem; 
             font-weight: 600;
             margin: 0 0 25px 0; 
@@ -104,17 +107,134 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #777;
+            color: #aaaaaa;
             margin: 30px 0 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 8px;
         }
         
         /* =========================================
-           6. BOTONES E INTERACTIVIDAD REFINADA
+           6. BOTONES E INTERACTIVIDAD
            ========================================= */
         .btn { 
             display: flex; 
             align-items: center;
             justify-content: center;
-            background: rgba(28, 28, 28,
+            /* Botones sutilmente translúcidos para mantener el estilo cristal */
+            background: rgba(30, 30, 30, 0.6); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            color: #ffffff; 
+            text-decoration: none; 
+            padding: 16px; 
+            margin-bottom: 12px; 
+            border-radius: 14px; 
+            font-size: 0.95rem; 
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            cursor: pointer;
+        }
+        
+        .btn:hover { 
+            background: rgba(50, 50, 50, 0.8); 
+            transform: translateY(-4px) scale(1.02); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* =========================================
+           7. ICONOS SVG Y WIDGET
+           ========================================= */
+        .icon {
+            width: 22px;
+            height: 22px;
+            margin-right: 12px;
+            fill: currentColor; 
+            flex-shrink: 0;
+        }
+
+        .spotify-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CAPA DEL FONDO ANIMADO PIPELINE -->
+    <div class="content content--canvas"></div>
+    
+    <!-- TARJETA GLASSMORPHISM -->
+    <div class="card">
+        
+        <!-- FOTO DE PERFIL Y NOMBRE -->
+        <div class="profile-img-container">
+            <img src="foto.jpg" alt="Emmanuel Magallanes Ulloa" class="profile-img">
+        </div>
+        
+        <h1>Emmanuel Magallanes</h1>
+        <p class="institution">Académico / Investigador</p>
+
+        <div class="section-title">Contacto Directo</div>
+        
+        <!-- WHATSAPP -->
+        <a href="https://wa.me/524931912255?text=Hola%20Emmanuel!%20Acabo%20de%20escanear%20tu%20tarjeta." class="btn" target="_blank">
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M12.031 0C5.385 0 .004 5.38.004 12.027c0 2.124.553 4.195 1.603 6.015L.03 24l6.115-1.605a11.972 11.972 0 0 0 5.885 1.541h.005c6.645 0 12.025-5.38 12.025-12.026C24.06 5.38 18.675 0 12.03 0zm0 21.942h-.005a9.982 9.982 0 0 1-5.087-1.393l-.364-.216-3.782.99.993-3.685-.238-.377a9.98 9.98 0 0 1-1.527-5.32C1.986 6.505 6.474 2.015 12.03 2.015c5.556 0 10.045 4.49 10.045 10.045 0 5.555-4.49 10.044-10.044 10.044zm5.518-7.534c-.302-.15-1.785-.882-2.062-.983-.277-.1-.478-.15-.678.15-.202.302-.78.983-.956 1.184-.176.202-.353.227-.655.076-.302-.15-1.275-.47-2.428-1.5-1.006-.897-1.504-1.79-1.68-2.09-.176-.302-.018-.465.132-.616.136-.135.302-.352.453-.528.15-.176.202-.302.302-.503.1-.2.05-.377-.025-.528-.076-.15-.678-1.637-.928-2.242-.244-.59-.494-.51-.678-.52h-.578c-.202 0-.528.076-.804.378-.277.302-1.057 1.033-1.057 2.518 0 1.485 1.082 2.92 1.233 3.12.15.202 2.128 3.25 5.154 4.557.72.312 1.282.497 1.72.637.724.23 1.383.197 1.902.12.58-.087 1.785-.73 2.036-1.435.25-.705.25-1.31.176-1.436-.076-.126-.277-.202-.58-.352z"/>
+            </svg>
+            WhatsApp
+        </a>    
+        
+        <!-- CORREO PERSONAL -->
+        <a href="mailto:emagallanes.u2@gmail.com" class="btn">
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Correo Personal
+        </a>
+
+        <!-- CORREO INSTITUCIONAL -->
+        <a href="mailto:emagallanes@upz.edu.mx" class="btn">
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Correo Institucional
+        </a>
+        
+        <div class="section-title">Redes y Publicaciones</div>
+        
+        <!-- RESEARCHGATE -->
+        <a href="https://www.researchgate.net/profile/Emmanuel-Magallanes" class="btn" target="_blank">
+            <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="4" fill="currentColor"/>
+                <text x="12" y="17" font-family="Montserrat, sans-serif" font-weight="900" font-size="14" fill="#111111" text-anchor="middle">RG</text>
+            </svg>
+            ResearchGate
+        </a>
+
+        <!-- FACEBOOK -->
+        <a href="#" class="btn" target="_blank">
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            Facebook
+        </a>
+
+        <div class="section-title">Escucha mi Podcast</div>
+
+        <!-- WIDGET DE SPOTIFY -->
+        <div class="spotify-container">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/episode/1HarOHEegQzGNRQX5G9mUl?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+    </div>
+
+    <!-- SCRIPTS PARA EL EFECTO PIPELINE DE CODROPS (Cargados vía CDN Oficial) -->
+    <script src="https://cdn.jsdelivr.net/gh/crnacura/AmbientCanvasBackgrounds/js/noise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/crnacura/AmbientCanvasBackgrounds/js/util.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/crnacura/AmbientCanvasBackgrounds/js/pipeline.js"></script>
+
+</body>
+</html>
